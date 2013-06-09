@@ -19,7 +19,7 @@ module.exports = (Impromptu, register, self) ->
       self.info (err, result) ->
         done err, !!result
 
-  register 'isTrunk',
+  register 'trunk',
     update: (done) ->
       self.url (err, url) ->
         trunk = !! url?.match?(/\/trunk(\/|$)/)
