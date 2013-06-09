@@ -50,3 +50,23 @@ module.exports = (Impromptu, register, self) ->
         return done err, false unless rev
 
         done err, parseInt(rev, 10)
+
+  register 'directoryType',
+    update: (done) ->
+      async.filter ['trunk', 'tag', 'branch'], (type, cb) ->
+        self[type] (err, result) ->
+          cb !! result
+      , (results) ->
+        done null, results
+
+  register '_workingVersion',
+    update: (done) ->
+      self.workingType (err, type) ->
+        if err or !type.length
+          return done err, null
+
+        if type is 'trunk'
+          done err, {type: 'trunk': version: true}
+        else
+          self[type] (err, typeVersion) ->
+            done err, {type: type, version: typeVersion}
