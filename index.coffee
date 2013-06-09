@@ -1,3 +1,5 @@
+async = require 'async'
+
 module.exports = (Impromptu, register, self) ->
   register 'info',
     update: (done) ->
