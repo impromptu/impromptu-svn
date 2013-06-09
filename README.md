@@ -1,4 +1,4 @@
-impromptu-git
+impromptu-svn
 =============
 
-A git module for Impromptu.
+An SVN module for Impromptu.
