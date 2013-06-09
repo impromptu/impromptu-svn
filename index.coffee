@@ -16,8 +16,8 @@ module.exports = (Impromptu, register, self) ->
 
   register 'isRepo',
     update: (done) ->
-      self.info (err) ->
-        done err, !err
+      self.info (err, result) ->
+        done err, !!result
 
   register 'isTrunk',
     update: (done) ->
